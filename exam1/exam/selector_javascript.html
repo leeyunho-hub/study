@@ -5,25 +5,7 @@
 <meta charset="utf-8">
 <title>exam</title>
 <link rel="stylesheet" href="common.css" />
-<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> jQuery library-->
 <script>
-// jQuery default
-// $(document).ready(function(){
-
-// });
-// $(function(){
-
-// });
-
-
-// jQuery code
-// $(function(){
-// 	var examObj1 = $('.exam_wrap:eq(0)');
-// 	examObj1.find('button').on('click', function(){
-// 		examObj1.find('.exam_q *').css('background','yellow');
-// 	});
-// });
-
 // javascript code
 window.onload = function(){
 	var examObj1 = document.getElementsByClassName('exam_wrap')[0];
@@ -33,7 +15,44 @@ window.onload = function(){
 			examChild[i].style.backgroundColor = 'yellow';
 		}
 	};
-}
+
+	var examObj = document.getElementsByClassName('exam_wrap');
+
+	for(var obj = 1; obj < examObj.length; obj++){
+		examObj[obj].getElementsByTagName('button')[0].onclick = function(){
+			var examChild = this.parentNode.getElementsByClassName('exam_q')[0];
+			switch (this.parentNode){
+				case examObj[1]:
+					examTarget(examChild.querySelectorAll('span'));
+					break;
+				case examObj[2]:
+					examTarget(examChild.querySelectorAll('em span'));
+					break;
+				case examObj[3]:
+					examTarget(examChild.querySelectorAll('.exam_q > span'));
+					break;
+				case examObj[4]:
+					examTarget(examChild.querySelectorAll('div + p'));
+					break;
+				case examObj[5]:
+					examTarget(examChild.querySelectorAll('div ~ span'));
+					break;
+				case examObj[6]:
+					examTarget(examChild.querySelectorAll('.active'));
+					break;
+				case examObj[7]:
+					examTarget(examChild.querySelectorAll('#active'));
+					break;
+			};
+		};
+	};
+
+	function examTarget(examNode){
+		for(var i = 0; i < examNode.length; i++){
+			examNode[i].style.backgroundColor = 'yellow';
+		}
+	};
+};
 </script>
 </head>
 <body>

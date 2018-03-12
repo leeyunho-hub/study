@@ -5,6 +5,50 @@
 <meta charset="utf-8">
 <title>exam</title>
 <link rel="stylesheet" href="common.css" />
+<script>
+// javascript code
+window.onload = function(){
+	var examObj = document.getElementsByClassName('exam_wrap');
+
+	for(var obj = 0; obj < examObj.length; obj++){
+		examObj[obj].getElementsByTagName('button')[0].onclick = function(){
+			var examChild = this.parentNode.getElementsByClassName('exam_q')[0];
+			switch (this.parentNode){
+				case examObj[0]:
+					examTarget(examChild.querySelectorAll(':first-child'));
+					break;
+				case examObj[1]:
+					examTarget(examChild.querySelectorAll(':last-child'));
+					break;
+				case examObj[2]:
+					examTarget(examChild.querySelectorAll('.exam_q > :first-child'));
+					break;
+				case examObj[3]:
+					examTarget(examChild.querySelectorAll('.exam_q > :last-child'));
+					break;
+				case examObj[4]:
+					examTarget(examChild.querySelectorAll(':nth-child(2)'));
+					break;
+				case examObj[5]:
+					examTarget(examChild.querySelectorAll(':nth-child(3)'));
+					break;
+				case examObj[6]:
+					examTarget(examChild.querySelectorAll(':nth-child(3) ~ *'));
+					break;
+				case examObj[7]:
+					examTarget(examChild.querySelectorAll(':nth-child(1), :nth-child(2)'));
+					break;
+			};
+		};
+	};
+
+	function examTarget(examNode){
+		for(var i = 0; i < examNode.length; i++){
+			examNode[i].style.backgroundColor = 'yellow';
+		}
+	};
+};
+</script>
 </head>
 <body>
 <!-- wrapper [s] -->
