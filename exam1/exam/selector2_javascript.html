@@ -15,16 +15,16 @@ window.onload = function(){
 			var examChild = this.parentNode.getElementsByClassName('exam_q')[0];
 			switch (this.parentNode){
 				case examObj[0]:
-					examTarget(examChild.querySelectorAll(':first-child'));
-					break;
-				case examObj[1]:
-					examTarget(examChild.querySelectorAll(':last-child'));
-					break;
-				case examObj[2]:
 					examTarget(examChild.querySelectorAll('.exam_q > :first-child'));
 					break;
-				case examObj[3]:
+				case examObj[1]:
 					examTarget(examChild.querySelectorAll('.exam_q > :last-child'));
+					break;
+				case examObj[2]:
+					examTarget(examChild.querySelectorAll(':first-child'));
+					break;
+				case examObj[3]:
+					examTarget(examChild.querySelectorAll(':last-child'));
 					break;
 				case examObj[4]:
 					examTarget(examChild.querySelectorAll(':nth-child(2)'));

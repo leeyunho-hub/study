@@ -11,22 +11,22 @@
 $(function(){
 	var examObj1 = $('.exam_wrap:eq(0)');
 	examObj1.find('button').on('click', function(){
-		examObj1.find('.exam_q :first-child').css('background','yellow');
+		examObj1.find('.exam_q :first').css('background','yellow');
 	});
 
 	var examObj2 = $('.exam_wrap:eq(1)');
 	examObj2.find('button').on('click', function(){
-		examObj2.find('.exam_q :last-child').css('background','yellow');
+		examObj2.find('.exam_q :last').css('background','yellow');
 	});
 
 	var examObj3 = $('.exam_wrap:eq(2)');
 	examObj3.find('button').on('click', function(){
-		examObj3.find('.exam_q :first').css('background','yellow');
+		examObj3.find('.exam_q :first-child').css('background','yellow');
 	});
 
 	var examObj4 = $('.exam_wrap:eq(3)');
 	examObj4.find('button').on('click', function(){
-		examObj4.find('.exam_q :last').css('background','yellow');
+		examObj4.find('.exam_q :last-child').css('background','yellow');
 	});
 
 	var examObj5 = $('.exam_wrap:eq(4)');
