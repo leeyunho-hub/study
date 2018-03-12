@@ -3,53 +3,56 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>exam</title>
+<title>selector javascript</title>
 <link rel="stylesheet" href="common.css" />
-<script src="http://code.jquery.com/jquery-latest.js"></script><!--  jQuery library -->
 <script>
-// jQuery code
-$(function(){
-	var examObj1 = $('.exam_wrap:eq(0)');
-	examObj1.find('button').on('click', function(){
-		examObj1.find('.exam_q *').css('background','yellow');
-	});
+// javascript code
+window.onload = function(){
+	var examObj1 = document.getElementsByClassName('exam_wrap')[0];
+	examObj1.getElementsByTagName('button')[0].onclick = function(){
+		var examChild = examObj1.getElementsByClassName('exam_q')[0].querySelectorAll('*');
+		for(var i = 0; i < examChild.length; i++){
+			examChild[i].style.backgroundColor = 'yellow';
+		}
+	};
 
-	var examObj2 = $('.exam_wrap:eq(1)');
-	examObj2.find('button').on('click', function(){
-		examObj2.find('span').css('background','yellow');
-	});
+	var examObj = document.getElementsByClassName('exam_wrap');
 
-	var examObj3 = $('.exam_wrap:eq(2)');
-	examObj3.find('button').on('click', function(){
-		examObj3.find('em span').css('background','yellow');
-	});
+	for(var obj = 1; obj < examObj.length; obj++){
+		examObj[obj].getElementsByTagName('button')[0].onclick = function(){
+			var examChild = this.parentNode.getElementsByClassName('exam_q')[0];
+			switch (this.parentNode){
+				case examObj[1]:
+					examTarget(examChild.querySelectorAll('span'));
+					break;
+				case examObj[2]:
+					examTarget(examChild.querySelectorAll('em span'));
+					break;
+				case examObj[3]:
+					examTarget(examChild.querySelectorAll('.exam_q > span'));
+					break;
+				case examObj[4]:
+					examTarget(examChild.querySelectorAll('div + p'));
+					break;
+				case examObj[5]:
+					examTarget(examChild.querySelectorAll('div ~ span'));
+					break;
+				case examObj[6]:
+					examTarget(examChild.querySelectorAll('.active'));
+					break;
+				case examObj[7]:
+					examTarget(examChild.querySelectorAll('#active'));
+					break;
+			};
+		};
+	};
 
-	var examObj4 = $('.exam_wrap:eq(3)');
-	examObj4.find('button').on('click', function(){
-		examObj4.find('.exam_q > span').css('background','yellow');
-	});
-
-	var examObj5 = $('.exam_wrap:eq(4)');
-	examObj5.find('button').on('click', function(){
-		examObj5.find('div + p').css('background','yellow');
-	});
-
-	var examObj6 = $('.exam_wrap:eq(5)');
-	examObj6.find('button').on('click', function(){
-		examObj6.find('div ~ span').css('background','yellow');
-	});
-
-	var examObj7 = $('.exam_wrap:eq(6)');
-	examObj7.find('button').on('click', function(){
-		examObj7.find('.active').css('background','yellow');
-	});
-
-	var examObj8 = $('.exam_wrap:eq(7)');
-	examObj8.find('button').on('click', function(){
-		examObj8.find('#active').css('background','yellow');
-	});
-	
-});
+	function examTarget(examNode){
+		for(var i = 0; i < examNode.length; i++){
+			examNode[i].style.backgroundColor = 'yellow';
+		}
+	};
+};
 </script>
 </head>
 <body>
